@@ -317,7 +317,8 @@ border-radius: 50%;
     grid-area: bio;
     border-left: 3px solid #F15142;
     border-right: 3px solid #F15142;
-    width: 830px;
+    width: 80%;
+    margin-left: 8%;
     padding: 0.8rem; }
     #about-b .bio {
       grid-area: bio;
