@@ -26,9 +26,9 @@ class TypeWriter {
   
       // Insert txt into element
       this.txtElement.innerHTML = `<span class="txt">${this.txt}</span>`;
-  
-      // Initial Type Speed
-      let typeSpeed = 300;
+
+  // Initial Type Speed
+      let typeSpeed = 500;
   
       if (this.isDeleting) {
         typeSpeed /= 2;
@@ -43,9 +43,9 @@ class TypeWriter {
       } else if (this.isDeleting && this.txt === '') {
         this.isDeleting = false;
         // Move to next word
-        this.wordIndex++;
+   this.wordIndex++;
         // Pause before start typing
-        typeSpeed = 500;
+        typeSpeed = 100;
       }
   
       setTimeout(() => this.type(), typeSpeed);
@@ -59,7 +59,6 @@ class TypeWriter {
   function init() {
     const txtElement = document.querySelector('.txt-type');
     const words = JSON.parse(txtElement.getAttribute('data-words'));
-    const wait = txtElement.getAttribute('data-wait');
-    // Init TypeWriter
-    new TypeWriter(txtElement, words, wait);
-  }
+    const wait = txt  Ess.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+    document.body.appendChild(css);
+};
