@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CONTACTS</title>
+    <link rel="stylesheet" href="dist/css/style.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-xl-4 col-lg-4 col-md-6 d-flex nav-links">
+                    <h2 class="text-white">Characters</h2>
+                    <button class="btn-head btn-new active" linkto="form-info">Add</button>
+                    <button class="btn-head btn-list" linkto="list-contact">List<span>0</span></button>
+                </div>
+              
+            </div>
+        </div>
+    </header>
+    <section class="container hero">
+        <div class="form-info content-contacts active">
+            <h4 class="text-center">Person Information</h4>
+            <form action="" id="form" class="row justify-content-around">
+                <div class="col-xl-5 col-lg-5 col-md-6">
+                    <label for="name">Name</label>
+                    <input type="text" id="Name" class="number-Ph-person input-form">
+                    <label for="pronouns">Pronouns</label>
+                    <input type="pronouns" id="pronouns" class="email-person input-form">
+                    <label for="archetype">Archetype</label>
+                    <input type="text" id="archetype" class="input-form job-person">
+                    <label for="description">Description</label>
+                    <input type="text" id="description" class="input-form address-person">
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="charm">Charm</label>
+                            <input type="number" id="charm" class="input-form address-person">
+                        </div>
+                        <div class="col-2">
+                            <label for="cool">Cool</label>
+                            <input type="number" id="cool" class="input-form address-person">
+                        </div>
+                        <div class="col-2">
+                            <label for="sharp">Sharp</label>
+                            <input type="number" id="sharp" class="input-form address-person">
+                        </div>
+                        <div class="col-2">
+                            <label for="tough">Tough</label>
+                            <input type="number" id="tough" class="input-form address-person">
+                        </div>
+                        <div class="col-2">
+                            <label for="weird">Weird</label>
+                            <input type="number" id="weird" class="input-form address-person">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-5 col-lg-5 col-md-6">
+
+                    <label for="history">History</label>
+                    <textarea name="" id="history" cols="" rows="5" class="input-form note-person"></textarea>
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="luck">Luck</label>
+                            <p>0-Okay</p>   <input type="number" id="luck" max="7" min="0" class="input-form address-person"><p>7-Doomed</p>
+                        </div>
+                        <div class="col-4">
+                            <label for="harm">Harm</label>
+                            <p>0-Okay</p> <input type="number" max="8" min="0" id="harm" class="input-form address-person"><p>8-Un-responsive</p>
+                        </div>
+                        <div class="col-4">
+                            <label for="experience">Experience</label>
+                           <p>At 5</p>   <input type="number" max="5" min="0" id="experience" class="input-form address-person"><p>Level up!</p>
+                        </div>
+                    </div>
+                    <input type="submit" value="Add" class="btn btn-secondary btn-add" style="float:right">
+                </div>
+            </form>
+        </div>
+        <div class="list-contact content-contacts">
+            <h4 class="text-center">Characters List</h4>
+            <div class="row justify-content-center">
+                <div class="row col-11 group-items"></div>
+            </div>
+        </div>
+        <div class="text-center modal-add"></div>
+    </section>
+<script src="../dist/js/message.js"></script>
+</body>
+</html>
+
+<style>
+    .col-2{
+        float:left;
+        margin-right:15px
+    }
+</style>

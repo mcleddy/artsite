@@ -4,7 +4,6 @@ const listcolor = ["#E1341E", "#F6DA09", "#02FD77", "#FC7D03", "#0382FC", "#FC03
 // variables
 const windowContacts = document.querySelector('.list-contact');
 const listContacts = document.querySelector('.group-items');
-const SearchHead = document.querySelector('.search-fullname');
 const fromInputs = document.querySelector('#form');
 const hero_body = document.querySelector('.hero')
 
@@ -20,18 +19,24 @@ for (let i = 0; i < btnsHead.length; i++) {
         document.querySelector(`.${btnsHead[i].getAttribute('linkto')}`).classList.add('active');
     }
 }
-SearchHead.addEventListener('click', () => btnsHead[1].click())
 
 // Classes: -------------------------
 // contact Class: Represents a contact
 class contact {
-    constructor(flName, email, cmpJob, address, numTel, note) {
-        this.flName = flName;
-        this.email = email;
-        this.cmpJob = cmpJob;
-        this.address = address;
-        this.numTel = numTel;
-        this.note = note;
+    constructor(pronouns, archetype, description, name, history, charm, cool, sharp, tough, weird, luck, harm, experience) {
+        this.pronouns = pronouns;
+        this.archetype = archetype;
+        this.description = description;
+        this.name = name;
+        this.history = history;
+        this.charm = charm;
+        this.cool = cool;
+        this.sharp = sharp;
+        this.tough = tough;
+        this.weird = weird;
+        this.luck = luck;
+        this.harm = harm;
+        this.experience = experience;
     }
 }
 
@@ -46,18 +51,13 @@ class UI {
 
         person.classList = 'col-12 justify-content-between align-items-center singal-person';
         person.innerHTML = `
-            <div class="d-flex align-items-center name-person">
-                <span>${contact.flName.charAt(0).toUpperCase()}</span>
-                <h4 class="flname">${contact.flName}</h4>
-            </div>
-            <h5>${contact.email}</h5>
-            <h5>${contact.numTel}</h5>
+            <h5>${contact.pronouns}</h5>
+            <h5>${contact.name}</h5>
             <div class="position-relative">
                 <i class="bi bi-three-dots-vertical" data_click="close"></i>
                 <ul class="dots other-actions"> 
                     <li class="btn-view"><i class="bi bi-eye"></i>View</li>
-                    <li><i class="bi bi-star"></i>Favorite</li>
-                    <li class="btn-edit"><i class="bi bi-pencil"></i>Edit</li>
+                    <li class="btn-edit"><i class="bi bi-pencil"></i>Update</li>
                     <li class="btn-remove"><i class="bi bi-trash"></i>Remove</li>
                 </ul> 
             </div>
@@ -66,8 +66,7 @@ class UI {
 
         // Style first letter from full bame
         const indexColor = Math.floor(Math.random() * listcolor.length);
-        const first_L = person.querySelector('div div span');
-        first_L.style.background = `${listcolor[indexColor]}`;
+
 
         // Setting
         const btnDots = person.querySelector('.bi-three-dots-vertical');
@@ -76,8 +75,8 @@ class UI {
         // Display contact info 
         const btn_view = person.querySelector('.btn-view');
         btn_view.addEventListener('click', () => {
-            const num_tel = btn_view.parentElement.parentElement.previousElementSibling.textContent;
-            UI.viewItem(num_tel)
+            const char_name = btn_view.parentElement.parentElement.previousElementSibling.textContent;
+            UI.viewItem(char_name)
         })
 
         // Remove contact
@@ -99,21 +98,26 @@ class UI {
     }
     static viewItem(numCantact) {
         let Contacts = Store.getcontact()
-        let contactInfo = Contacts.filter(contact => contact.numTel === numCantact);
+        let contactInfo = Contacts.filter(contact => contact.name === numCantact);
 
         const container_info = document.createElement('div');
         container_info.className = "view-contact";
         container_info.innerHTML = `
             <div class="content-view">
                 <i class="bi bi-x-lg"></i>
-                <ul>
-                    <li>${contactInfo[0].flName}</li>
-                    <li><i class="bi bi-telephone"></i>${contactInfo[0].numTel}</li>
-                    <li><i class="bi bi-envelope"></i>${contactInfo[0].email}</li>
-                    <li><i class="bi bi-building"></i>${contactInfo[0].cmpJob}</li>
-                    <li><i class="bi bi-geo-alt"></i>${contactInfo[0].address}</li>
-                    <li><i class="bi bi-chat-right"></i>${contactInfo[0].note}</li>
-                </ul>
+                <h3 style="width:300px; float: left">${contactInfo[0].name}</h3>
+                <h4 style="width:300px; float: left">${contactInfo[0].pronouns}</h4>
+                <h4>${contactInfo[0].archetype}</h4>
+                <h4>${contactInfo[0].description}</h4>
+                <h4>${contactInfo[0].history}</h4>
+                    <p style="width:75px; float: left">Charm: ${contactInfo[0].charm} </p>
+                    <p style="width:75px; float: left">Cool: ${contactInfo[0].cool} </p>
+                    <p style="width:75px; float: left">Sharp: ${contactInfo[0].sharp} </p>
+                    <p style="width:75px; float: left">Tough: ${contactInfo[0].tough} </p>
+                    <p style="width:75px; float: left">Weird: ${contactInfo[0].weird} </p>
+                    <p style="width:75px; float: left">Luck: ${contactInfo[0].luck} </p>
+                    <p style="width:75px; float: left">Harm: ${contactInfo[0].harm} </p>
+                    <p style="width:75px; float: left">Experiene: ${contactInfo[0].experience} </p>
             </div>
         `
         hero_body.appendChild(container_info);
@@ -130,7 +134,7 @@ class UI {
 
         btn_remove.parentElement.parentElement.parentElement.remove();
         Contacts.forEach((contact, index) => {
-            if (contact.numTel === nem_tel) {
+            if (contact.name === nem_tel) {
                 Contacts.splice(index, 1)
             }
         });
@@ -142,11 +146,11 @@ class UI {
     }
     static editItem(e) {
         const edit = e.target;
-        const num_tel = edit.parentElement.parentElement.previousElementSibling.textContent;
+        const char_name = edit.parentElement.parentElement.previousElementSibling.textContent;
 
         const Contacts = Store.getcontact();
         Contacts.forEach((item, index) => {
-            if (item.numTel === num_tel) {
+            if (item.name === char_name) {
                 formEdit(item, index)
             }
         })
@@ -157,22 +161,48 @@ class UI {
             editContact.innerHTML = `
                 <div class="row content-edit">
                     <div class="col-xl-6 col-lg-6 col-md-12">
-                        <label for=""></label>
-                        <input class="inpt-flname" type="text" value="${item.flName}">
-                        <label for="">Email</label>
-                        <input class="inpt-email" type="text" value="${item.email}">
-                        <label for="">Company name</label>
-                        <input class="inpt-cmpjob" type="text" value="${item.cmpJob}">
-                        <label for="">Address</label>
-                        <input class="inpt-address" type="text" value="${item.address}">
+                        <label for=""></label>                    
+                        <label for="">Name</label>
+                        <input class="inpt-name" type="text" value="${item.name}">
+                        <label for="">Pronouns</label>
+                        <input class="inpt-pronouns" type="text" value="${item.pronouns}">
+                        <label for="">Archetype</label>
+                        <input class="inpt-archetype" type="text" value="${item.archetype}">
+                        <label for="">description</label>
+                        <input class="inpt-description" type="text" value="${item.description}">
+
+                        <label for="">Luck</label>
+                        <input class="inpt-luck" type="number" max="7" min="0" value="${item.luck}">
+
+                        <label for="">Harm</label>
+                        <input class="inpt-harm" type="number" max="8" min="0" value="${item.harm}">
+
+                        <label for="">Experience</label>
+                        <input class="inpt-experience" type="number" max="5" min="0" value="${item.experience}">
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-md-12">
-                        <label for="">Number phone</label>
-                        <input class="inpt-numtel" type="text" value="${item.numTel}">
-                        <label for="">Notes</label>
-                        <textarea class="inpt-note" rows="5">${item.note}</textarea>
-                        <button class="btn-save">Edit</button>
+
+                    <div class="col-xl-6 col-lg-6 col-md-12">  
+                        <label for="">History</label>
+                        <textarea class="inpt-history" rows="4">${item.history}</textarea>
+
+                        <label for="">Charm</label>
+                        <input class="inpt-charm" type="number" value="${item.charm}" style="width: 10px">
+
+                        <label for="">Cool</label>
+                        <input class="inpt-cool" type="number" value="${item.cool}" style="width: 10px">
+
+                        <label for="">Sharp</label>
+                        <input class="inpt-sharp" type="number" value="${item.sharp}" style="width: 10px">
+
+                        <label for="">Tough</label>
+                        <input class="inpt-tough" type="number" value="${item.tough}" style="width: 10px">
+
+                        <label for="">Weird</label>
+                        <input class="inpt-weird" type="number" value="${item.weird}" style="width: 10px">
+ 
+                        <button class="btn-save">Update</button>
                         <button class="btn-cancel">cancel</button>
+
                     </div>
                 </div>
             `
@@ -183,14 +213,23 @@ class UI {
 
             const btnSave = editContact.querySelector('.btn-save');
             btnSave.onclick = () => {
-                const flName = editContact.querySelector('.inpt-flname').value;
-                const email = editContact.querySelector('.inpt-email').value;
-                const cmpJob = editContact.querySelector('.inpt-cmpjob').value;
-                const address = editContact.querySelector('.inpt-address').value;
-                const numTel = editContact.querySelector('.inpt-numtel').value;
-                const note = editContact.querySelector('.inpt-note').value;
 
-                const newEdit = new contact(flName, email, cmpJob, address, numTel, note)
+                const pronouns = editContact.querySelector('.inpt-pronouns').value;
+                const archetype = editContact.querySelector('.inpt-archetype').value;
+                const description = editContact.querySelector('.inpt-description').value;
+                const name = editContact.querySelector('.inpt-name').value;
+                const history = editContact.querySelector('.inpt-history').value;
+                const charm = editContact.querySelector('.inpt-charm').value;
+                const cool = editContact.querySelector('.inpt-cool').value;
+                const sharp = editContact.querySelector('.inpt-sharp').value;
+                const tough = editContact.querySelector('.inpt-tough').value;
+                const weird = editContact.querySelector('.inpt-weird').value;
+                const luck = editContact.querySelector('.inpt-luck').value;
+                const harm = editContact.querySelector('.inpt-harm').value;
+                const experience = editContact.querySelector('.inpt-experience').value;
+                
+
+                const newEdit = new contact(pronouns, archetype, description, name, history, charm, cool, sharp, tough, weird, luck, harm, experience)
                 Contacts.splice(index, 1, newEdit)
                 localStorage.setItem('Contacts', JSON.stringify(Contacts));
 
@@ -200,19 +239,7 @@ class UI {
             }
         }
     }
-    static searchContact() {
-        if (listContacts.childElementCount) {
-            const searchValue = SearchHead.value.toUpperCase().trim();
-            const Allcontact = listContacts.querySelectorAll('.singal-person');
-            listContacts.querySelectorAll('.flname').forEach(el => {
-                if (el.textContent.toUpperCase().indexOf(searchValue) > -1) {
-                    el.parentElement.parentElement.style.display = "flex";
-                } else {
-                    el.parentElement.parentElement.style.display = "none";
-                }
-            })
-        }
-    }
+
 }
 
 // Store class: handles contacts from Store
@@ -240,18 +267,26 @@ fromInputs.addEventListener('submit', (e) => {
     e.preventDefault()
 
     // Get form values
-    const flName = document.querySelector('#flname').value;
-    const email = document.querySelector('#email').value;
-    const cmpJob = document.querySelector('#com_job').value;
-    const address = document.querySelector('#address').value;
-    const numTel = document.querySelector('#num_phone').value;
-    const note = document.querySelector('#note').value;
+
+    const pronouns = document.querySelector('#pronouns').value;
+    const archetype = document.querySelector('#archetype').value;
+    const description = document.querySelector('#description').value;
+    const name = document.querySelector('#Name').value;
+    const history = document.querySelector('#history').value;
+    const charm = document.querySelector('#charm').value;
+    const cool = document.querySelector('#cool').value;
+    const sharp = document.querySelector('#sharp').value;
+    const tough = document.querySelector('#tough').value;
+    const weird = document.querySelector('#weird').value;
+    const luck = document.querySelector('#luck').value;
+    const harm = document.querySelector('#harm').value;
+    const experience = document.querySelector('#experience').value;
 
     // Push Inputs Value to new object
-    const newContact = new contact(flName, email, cmpJob, address, numTel, note);
+    const newContact = new contact(pronouns, archetype, description, name, history, charm, cool, sharp, tough, weird, luck, harm, experience);
 
     // If the input values true
-    if (newContact.flName !== "" && newContact.email !== "" && newContact.numTel !== "") {
+    if (newContact.pronouns !== "" && newContact.name !== "") {
 
         // Addtrue()
         const Contacts = Store.getcontact();
@@ -261,7 +296,7 @@ fromInputs.addEventListener('submit', (e) => {
         if (Contacts.length === 0) {
             Addtrue()
         } else {
-            Contacts.forEach(item => { if (item.numTel === newContact.numTel) T += 1 })
+            Contacts.forEach(item => { if (item.name === newContact.name) T += 1 })
             if (T === 0) Addtrue()
             else Alert("alert-danger", "The number already exists")
         }
@@ -287,7 +322,6 @@ fromInputs.addEventListener('submit', (e) => {
 
 });
 
-SearchHead.addEventListener('keyup', () => UI.searchContact());
 
 // function: --------------
 function settingContact(e) {
