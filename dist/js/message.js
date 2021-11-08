@@ -50,13 +50,16 @@ class UI {
         const person = document.createElement('div');
 
         person.classList = 'col-12 justify-content-between align-items-center singal-person';
-        person.innerHTML = `
-            <h5>${contact.pronouns}</h5> 
+        person.innerHTML =
+            `
+            <h5>${contact.name}</h5>
+            <h5>${contact.pronouns}</h5>
+            <h5>${contact.archetype}</h5>
             <div class="position-relative">
                 <i class="bi bi-three-dots-vertical" data_click="close"></i>
-                <ul class="dots other-actions"> 
-                    <li class="btn-edit"><i class="bi bi-pencil"></i>Update</li>
+                <ul class="dots other-actions">                     
                     <li class="btn-view"><i class="bi bi-eye"></i>View</li>
+                    <li class="btn-edit"><i class="bi bi-pencil"></i>Update</li>
                     <li class="btn-remove"><i class="bi bi-trash"></i>Delete</li>
                 </ul> 
             </div>
