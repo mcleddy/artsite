@@ -51,17 +51,16 @@ class UI {
 
         person.classList = 'col-12 justify-content-between align-items-center singal-person';
         person.innerHTML = `
-            <h5>${contact.pronouns}</h5>
-            <h5>${contact.name}</h5>
+            <h5>${contact.pronouns}</h5> 
             <div class="position-relative">
                 <i class="bi bi-three-dots-vertical" data_click="close"></i>
                 <ul class="dots other-actions"> 
-                    <li class="btn-view"><i class="bi bi-eye"></i>View</li>
                     <li class="btn-edit"><i class="bi bi-pencil"></i>Update</li>
-                    <li class="btn-remove"><i class="bi bi-trash"></i>Remove</li>
+                    <li class="btn-view"><i class="bi bi-eye"></i>View</li>
+                    <li class="btn-remove"><i class="bi bi-trash"></i>Delete</li>
                 </ul> 
             </div>
-        `;
+       `;
         listContacts.appendChild(person);
 
         // Style first letter from full bame
@@ -108,7 +107,7 @@ class UI {
                 <h3 style="width:300px; float: left">${contactInfo[0].name}</h3>
                 <h4 style="width:300px; float: left">${contactInfo[0].pronouns}</h4>
                 <h4>${contactInfo[0].archetype}</h4>
-                <h4>${contactInfo[0].description}</h4>
+                <h6>${contactInfo[0].description}</h6>
                 <h4>${contactInfo[0].history}</h4>
                     <p style="width:75px; float: left">Charm: ${contactInfo[0].charm} </p>
                     <p style="width:75px; float: left">Cool: ${contactInfo[0].cool} </p>
@@ -186,22 +185,22 @@ class UI {
                         <textarea class="inpt-history" rows="4">${item.history}</textarea>
 
                         <label for="">Charm</label>
-                        <input class="inpt-charm" type="number" value="${item.charm}" style="width: 10px">
+                        <input class="inpt-charm" type="number" value="${item.charm}" style="width: 10px; margin-right: 5px;">
 
                         <label for="">Cool</label>
-                        <input class="inpt-cool" type="number" value="${item.cool}" style="width: 10px">
+                        <input class="inpt-cool" type="number" value="${item.cool}" style="width: 10px; margin-right: 5px;">
 
                         <label for="">Sharp</label>
-                        <input class="inpt-sharp" type="number" value="${item.sharp}" style="width: 10px">
+                        <input class="inpt-sharp" type="number" value="${item.sharp}" style="width: 10px; margin-right: 5px;">
 
                         <label for="">Tough</label>
-                        <input class="inpt-tough" type="number" value="${item.tough}" style="width: 10px">
+                        <input class="inpt-tough" type="number" value="${item.tough}" style="width: 10px; margin-right: 5px;">
 
                         <label for="">Weird</label>
-                        <input class="inpt-weird" type="number" value="${item.weird}" style="width: 10px">
+                        <input class="inpt-weird" type="number" value="${item.weird}" style="width: 10px; margin-right: 5px;">
  
                         <button class="btn-save">Update</button>
-                        <button class="btn-cancel">cancel</button>
+                        <button class="btn-cancel">Close</button>
 
                     </div>
                 </div>
