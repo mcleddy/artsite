@@ -100,7 +100,7 @@ class UI {
     }
     static viewItem(numCantact) {
         let Contacts = Store.getcontact()
-        let contactInfo = Contacts.filter(contact => contact.name === numCantact);
+      let contactInfo = Contacts.filter(contact => contact.name === numCantact)
 
         const container_info = document.createElement('div');
         container_info.className = "view-contact";
