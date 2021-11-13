@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
           integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet" />
 
 
     <title>Our Heros</title>
-    <link rel="stylesheet" href="dist/css/style.css">
+    <link rel="stylesheet" href="dist/css/style.css" />
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
@@ -112,8 +113,199 @@
 </html>
 
 <style>
-    .col-2{
-        float:left;
-        margin-right:15px
+    *, *::after, *::before {
+        box-sizing: border-box;
+    }
+
+    html {
+        font-size: 62.5%;
+    }
+
+    body {
+        font-size: 100%;
+        font-family: sans-serif;
+        color: #f8f7ee;
+        background-color: #29324e;
+        font-size: 1.6rem;
+        margin: 0;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    button {
+        cursor: pointer;
+        color: #29324e;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-radius: 3px;
+        border: 1px solid #29324e;
+        background-color: #FFF;
+        transition: color .3s, background-color .3s, transform .2s;
+    }
+
+        button:hover {
+            color: #FFF;
+            background-color: #29324e;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+    .text-replace {
+        color: transparent;
+        white-space: nowrap;
+        text-indent: 100%;
+        overflow: hidden;
+        font-size: 1.6rem;
+    }
+
+    /* -------------------------------- 
+
+List Style
+
+-------------------------------- */
+
+    h1 {
+        font-size: 3rem;
+        margin: 0;
+        padding: 1em 25px;
+    }
+
+    .lists-wrapper {
+        margin: 0 25px;
+    }
+
+    .single-list {
+        width: 320px;
+        max-width: 90%;
+        height: 100%;
+        margin: 2em auto;
+        padding: 1.5em;
+        background: #f8f7ee;
+        border-radius: 3px;
+    }
+
+        .single-list:first-of-type {
+            margin-top: 0;
+        }
+
+    .single-card {
+        margin-bottom: 2em;
+    }
+
+        .single-card.create-card {
+            margin-bottom: 0;
+        }
+
+    h2, .placeholder-title {
+        color: #29324e;
+        margin: 0;
+        font-size: 1.8rem;
+        text-decoration: underline;
+        font-weight: bold;
+    }
+
+    h2 {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-right: 24px;
+    }
+
+    .placeholder-title {
+        display: block;
+        cursor: pointer;
+        transition: color .3s;
+    }
+
+        .placeholder-title:hover {
+            color: #8493bf;
+        }
+
+    .card-content {
+        background-color: #FFF;
+        margin-top: .7em;
+        box-shadow: 0 2px 4px rgba(0,0,0, .1);
+        border-radius: 3px;
+    }
+
+        .card-content p, .card-content textarea, .single-list input[type="text"] {
+            margin: 0;
+            padding: 1em .5em;
+            font-size: 1.4rem;
+            color: #8493bf;
+        }
+
+    .single-list input[type="text"] {
+        color: #29324e;
+    }
+
+    .card-content textarea, .single-list input[type="text"] {
+        width: 100%;
+        border: none;
+        margin: 0;
+        font-family: sans-serif;
+        resize: none;
+        display: none;
+    }
+
+        .card-content textarea:focus {
+            outline: none;
+        }
+
+    .save-list {
+        display: none;
+    }
+
+    .list-placeholder {
+        margin-bottom: .7em;
+    }
+
+    .card-actions {
+        margin-top: .7em;
+    }
+
+        .card-actions::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .card-actions button {
+            margin-right: .5em;
+            float: left;
+        }
+
+    .save-card {
+        display: none;
+    }
+
+    /* user is creating a new list */
+    .editing.single-list .placeholder-title {
+        display: none;
+    }
+
+    .editing.single-list input[type="text"],
+    .editing.single-list .save-list {
+        display: block;
+    }
+
+    /* user is creating a new card */
+    .editing.single-card .card-content textarea,
+    .editing.single-card .save-card {
+        display: block;
+    }
+
+    .editing.single-card .add-card {
+        display: none;
     }
 </style>

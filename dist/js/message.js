@@ -56,7 +56,7 @@ class UI {
             <h5>${contact.pronouns}</h5>
             <h5>${contact.archetype}</h5>
             <div class="position-relative">
-                <i class="bi bi-three-dots-vertical" data_click="close"></i>
+                <i class="fas fa-caret-down" data_click="close"></i>
                 <ul class="dots other-actions">                     
                     <li class="btn-view"><i class="bi bi-eye"></i>View</li>
                     <li class="btn-edit"><i class="bi bi-pencil"></i>Update</li>
@@ -71,7 +71,7 @@ class UI {
 
 
         // Setting
-        const btnDots = person.querySelector('.bi-three-dots-vertical');
+        const btnDots = person.querySelector('.fa-caret-down');
         btnDots.addEventListener('click', (e) => settingContact(e))
 
         // Display contact info 
@@ -107,21 +107,10 @@ class UI {
         container_info.innerHTML = `
             <div class="content-view">
                 <i class="bi bi-x-lg"></i>
-                <h3 style="width:300px; float: left">${contactInfo[0].name}</h3>
-                <h4 style="width:300px; float: left">${contactInfo[0].pronouns}</h4>
-                <h4>${contactInfo[0].archetype}</h4>
-                <h6>${contactInfo[0].description}</h6>
-                <h4>${contactInfo[0].history}</h4>
-                    <p style="width:75px; float: left">Charm: ${contactInfo[0].charm} </p>
-                    <p style="width:75px; float: left">Cool: ${contactInfo[0].cool} </p>
-                    <p style="width:75px; float: left">Sharp: ${contactInfo[0].sharp} </p>
-                    <p style="width:75px; float: left">Tough: ${contactInfo[0].tough} </p>
-                    <p style="width:75px; float: left">Weird: ${contactInfo[0].weird} </p>
-                    <p style="width:75px; float: left">Luck: ${contactInfo[0].luck} </p>
-                    <p style="width:75px; float: left">Harm: ${contactInfo[0].harm} </p>
-                    <p style="width:75px; float: left">Experiene: ${contactInfo[0].experience} </p>
-            </div>
-        `
+<h3>${contact.name}</h3>
+<h3>${contactInfo[0]}</h3>
+       </div>
+     `  
         hero_body.appendChild(container_info);
         const liAll = container_info.querySelectorAll('li');
         liAll.forEach(li => { if (li.textContent === "") li.remove() })
@@ -144,7 +133,7 @@ class UI {
 
         Alert("alert-success", "Deleted successfully");
 
-        contactsLength()
+        contactsLength() 
     }
     static editItem(e) {
         const edit = e.target;

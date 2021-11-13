@@ -19,14 +19,13 @@
   
   .btn-light {
     color: #2F102F;
-    background-color: FCDCC7 }
+    background-color: #FCDCC7 }
   
   .btn-dark {
     color: white;
     background-color: #2F102F; }
   
-  button[class^="btn-"]:hover,
-  a[class^="btn-"]:hover,
+
   input[class^="btn-"]:hover {
     background-color: #F15142; }
   
@@ -72,7 +71,7 @@
     color: white; }
   
   .bg-light {
-    background-color: white; }
+    /*background-color: white;*/ }
   
   .section-title {
     font-size: 2rem;
@@ -153,7 +152,7 @@
       width: 100%;     
      border-radius: 5%;
       background-color: #2F102F;
-      opacity: 80%;
+      opacity: 100%;
       top: 50%;
       transform: translateY(-50%); }
     .item-text-title {
