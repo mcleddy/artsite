@@ -176,6 +176,12 @@ form {
         cursor: pointer;
     }
 
+  .singal-person .fa-caret-down {
+        font-size: 20px;
+        cursor: pointer;
+        margin:8px;
+    } 
+
     .singal-person .dots {
         display: none;
     }
@@ -183,13 +189,13 @@ form {
         .singal-person .dots.view {
             display: block;
             position: absolute;
-            top: 100%;
-            right: 100%;
+            float: right;
             padding: 10px 0px;
             background-color: #fff;
             border-radius: 3px;
             -webkit-box-shadow: 0px 0px 10px #363a3f50;
             box-shadow: 0px 0px 10px #363a3f50;
+
         }
 
         .singal-person .dots li {
@@ -287,7 +293,6 @@ form {
 .content-edit input,
 .content-edit textarea {
     display: block;
-    min-width: 600px;
     margin: 5px 0 15px;
     padding: 3px 5px;
     border: 1px solid #565e645e;
